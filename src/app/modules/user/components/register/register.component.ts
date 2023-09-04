@@ -33,4 +33,8 @@ export class RegisterComponent implements OnInit {
       password: '19970329',
     });
   }
+
+  onSubmit() {
+    console.log('Submit: ', this.registerForm.value);
+  }
 }
