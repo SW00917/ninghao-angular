@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from './models/post.model';
 // import { posts } from './posts';
 import { PostService } from './services/post.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -17,14 +18,23 @@ export class PostComponent implements OnInit {
   // ];
   entities: Post[];
 
+  selectedId!: number;
+
   // constructor() {
   //   this.entities = posts;
   // }
-  constructor(private postService: PostService) {
+  // constructor(private postService: PostService) {
+  //   this.entities = this.postService.index();
+  // }
+  constructor(private postService: PostService, private route: ActivatedRoute) {
     this.entities = this.postService.index();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.paramMap.subscribe((params) => {
+      this.selectedId = Number(params.get('id'));
+    });
+  }
 
   // removeItem(item: number) {
   //   console.log('remove...');

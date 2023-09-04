@@ -33,7 +33,10 @@ export class PostDetailsComponent implements OnInit {
     });
   }
 
-  gotoPost() {
-    this.router.navigate(['/posts']);
+  // gotoPost() {
+  //   this.router.navigate(['/posts']);
+  // }
+  gotoPost(entity: Post) {
+    this.router.navigate(['/posts', { id: entity.id }]);
   }
 }
