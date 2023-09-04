@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  FormBuilder,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -13,16 +18,22 @@ export class RegisterComponent implements OnInit {
   //   password: new FormControl(),
   // });
 
-  registerForm = new FormGroup({
-    username: new FormControl('', Validators.required),
-    // password: new FormControl('', Validators.minLength(6)),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(6),
-    ]),
+  // registerForm = new FormGroup({
+  //   username: new FormControl('', Validators.required),
+  //   // password: new FormControl('', Validators.minLength(6)),
+  //   password: new FormControl('', [
+  //     Validators.required,
+  //     Validators.minLength(6),
+  //   ]),
+  // });
+
+  registerForm = this.formBuilder.group({
+    username: ['', Validators.required],
+    password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
-  constructor() {}
+  // constructor() {}
+  constructor(private formBuilder: FormBuilder) {}
 
   // ngOnInit() {
   //   this.username.valueChanges.subscribe((value) => {
