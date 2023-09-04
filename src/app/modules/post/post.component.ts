@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from './models/post.model';
 
 @Component({
   selector: 'app-post',
@@ -8,19 +9,26 @@ import { Component, OnInit } from '@angular/core';
 export class PostComponent implements OnInit {
   title = 'Posts';
   entities = [
-    { title: '男歌手', body: '伍佰' },
-    { title: '女歌手', body: '白安' },
-    { title: '團體' },
+    { id: 1, title: '男歌手', body: '伍佰' },
+    { id: 2, title: '女歌手', body: '白安' },
+    { id: 3, title: '團體' },
   ];
 
   constructor() {}
 
   ngOnInit() {}
 
-  removeItem(item: number) {
+  // removeItem(item: number) {
+  //   console.log('remove...');
+  //   this.entities = this.entities.filter((entity, index) => {
+  //     return index !== item;
+  //   });
+  // }
+
+  removeItem(item: Post) {
     console.log('remove...');
-    this.entities = this.entities.filter((entity, index) => {
-      return index !== item;
+    this.entities = this.entities.filter((entity) => {
+      return entity.id !== item.id;
     });
   }
 }
