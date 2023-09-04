@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from './models/post.model';
-import { posts } from './posts';
+// import { posts } from './posts';
+import { PostService } from './services/post.service';
 
 @Component({
   selector: 'app-post',
@@ -16,8 +17,11 @@ export class PostComponent implements OnInit {
   // ];
   entities: Post[];
 
-  constructor() {
-    this.entities = posts;
+  // constructor() {
+  //   this.entities = posts;
+  // }
+  constructor(private postService: PostService) {
+    this.entities = this.postService.index();
   }
 
   ngOnInit() {}
