@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -7,15 +7,30 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  username = new FormControl();
+  // username = new FormControl();
+  registerForm = new FormGroup({
+    username: new FormControl(),
+    password: new FormControl(),
+  });
 
   constructor() {}
 
+  // ngOnInit() {
+  //   this.username.valueChanges.subscribe((value) => {
+  //     console.log('username: ', value);
+  //   });
+
+  //   this.username.setValue('MAYDAY');
+  // }
+
   ngOnInit() {
-    this.username.valueChanges.subscribe((value) => {
-      console.log('username: ', value);
+    this.registerForm.valueChanges.subscribe((value) => {
+      console.log('Register: ', value);
     });
 
-    this.username.setValue('MAYDAY');
+    this.registerForm.setValue({
+      username: 'MAYDAY',
+      password: '19970329',
+    });
   }
 }
