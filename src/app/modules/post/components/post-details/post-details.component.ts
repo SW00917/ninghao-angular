@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../../models/post.model';
 import { posts } from '../../posts';
 import { PostService } from '../../services/post.service';
@@ -13,9 +13,14 @@ export class PostDetailsComponent implements OnInit {
   entity!: Post;
 
   // constructor(private route: ActivatedRoute) {}
+  // constructor(
+  //   private route: ActivatedRoute,
+  //   private postService: PostService,
+  // ) {}
   constructor(
     private route: ActivatedRoute,
     private postService: PostService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -26,5 +31,9 @@ export class PostDetailsComponent implements OnInit {
       // this.entity = posts.find((post) => post.id === postId) as Post;
       this.entity = this.postService.show(postId) as Post;
     });
+  }
+
+  gotoPost() {
+    this.router.navigate(['/posts']);
   }
 }
