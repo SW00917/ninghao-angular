@@ -21,9 +21,13 @@ export class PostService {
   //   return this.entities.find((post) => post.id === id);
   // }
 
+  postApi = 'http://localhost:3000/posts';
+
   constructor(private http: HttpClient) {}
 
-  index() {}
+  index() {
+    return this.http.get(this.postApi);
+  }
 
   show(id: number) {}
 }

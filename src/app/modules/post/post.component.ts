@@ -26,13 +26,22 @@ export class PostComponent implements OnInit {
   // constructor(private postService: PostService) {
   //   this.entities = this.postService.index();
   // }
-  constructor(private postService: PostService, private route: ActivatedRoute) {
-    this.entities = this.postService.index();
-  }
+  // constructor(private postService: PostService, private route: ActivatedRoute) {
+  //   this.entities = this.postService.index();
+  // }
+  constructor(
+    private postService: PostService,
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       this.selectedId = Number(params.get('id'));
+    });
+
+    const entities$ = this.postService.index();
+    entities$.subscribe((data: any) => {
+      this.entities = data as Post[];
     });
   }
 
