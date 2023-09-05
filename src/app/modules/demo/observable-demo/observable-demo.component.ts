@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription, interval, of } from 'rxjs';
 
 @Component({
@@ -6,7 +6,7 @@ import { Observable, Subscription, interval, of } from 'rxjs';
   templateUrl: './observable-demo.component.html',
   styleUrls: ['./observable-demo.component.css'],
 })
-export class ObservableDemoComponent implements OnInit {
+export class ObservableDemoComponent implements OnInit, OnDestroy {
   demoObservable!: Observable<any>;
   demoSubscription!: Subscription;
 
@@ -15,6 +15,11 @@ export class ObservableDemoComponent implements OnInit {
   ngOnInit() {
     // this.demoObservable = of('小火龍', '皮卡丘', '超夢');
     this.demoObservable = interval(1000);
+  }
+
+  ngOnDestroy() {
+    console.log('ngOnDestroy: unsubscribe demo observable.');
+    this.demoSubscription.unsubscribe();
   }
 
   onClick() {
