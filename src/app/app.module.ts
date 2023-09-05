@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,8 +19,16 @@ import { MessageBoxComponent } from './core/components/message-box/message-box.c
     MessageBoxComponent,
   ],
   // imports: [BrowserModule, AppRoutingModule, PostModule, UserModule],
+  // imports: [
+  //   BrowserModule,
+  //   PostModule,
+  //   UserModule,
+  //   // DemoModule,
+  //   AppRoutingModule,
+  // ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     PostModule,
     UserModule,
     // DemoModule,

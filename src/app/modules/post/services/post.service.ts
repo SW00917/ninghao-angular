@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 // import { Post } from '../models/post.model';
 // import { posts } from '../posts';
@@ -20,7 +21,7 @@ export class PostService {
   //   return this.entities.find((post) => post.id === id);
   // }
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   index() {}
 
