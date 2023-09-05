@@ -1,5 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription, interval, map, of } from 'rxjs';
+import {
+  Observable,
+  Subscription,
+  filter,
+  interval,
+  map,
+  of,
+  pipe,
+} from 'rxjs';
 
 @Component({
   selector: 'app-observable-demo',
@@ -16,7 +24,11 @@ export class ObservableDemoComponent implements OnInit, OnDestroy {
     // this.demoObservable = of('小火龍', '皮卡丘', '超夢');
     // this.demoObservable = interval(1000);
     const someNumbers = interval(1000);
-    const transformValue = map((value) => `# ${value}`);
+    // const transformValue = map((value) => `# ${value}`);
+    const transformValue = pipe(
+      filter((value: number) => value % 2 !== 0),
+      map((value) => `# ${value}`),
+    );
     this.demoObservable = transformValue(someNumbers);
   }
 
