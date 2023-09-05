@@ -4,6 +4,7 @@ import { DemoComponent } from './demo.component';
 import { ChildRoutesComponent } from './child-routes/child-routes.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth/auth.guard';
+import { ObservableDemoComponent } from './observable-demo/observable-demo.component';
 // import { AdminComponent } from './admin/admin.component';
 // import { AuthGuard } from './auth/auth.guard';
 // import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
@@ -46,6 +47,10 @@ const routes: Routes = [
         loadChildren: () =>
           import('./admin/admin.module').then((module) => module.AdminModule),
         canLoad: [AuthGuard],
+      },
+      {
+        path: 'observable',
+        component: ObservableDemoComponent,
       },
     ],
   },

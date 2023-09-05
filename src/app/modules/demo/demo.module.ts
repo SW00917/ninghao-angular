@@ -9,12 +9,14 @@ import { LoginComponent } from './login/login.component';
 // import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 // import { PostModule } from '../post/post.module';
 import { AdminModule } from './admin/admin.module';
+import { ObservableDemoComponent } from './observable-demo/observable-demo.component';
 
 @NgModule({
   declarations: [
     DemoComponent,
     ChildRoutesComponent,
     LoginComponent,
+    ObservableDemoComponent,
     // AdminComponent,
     // AdminDashboardComponent,
   ],
