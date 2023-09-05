@@ -1,19 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Resolve } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Post } from '../models/post.model';
+import { PostService } from './post.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostDetailResolveService implements Resolve<Post> {
-  constructor() {}
+  constructor(private postService: PostService) {}
 
-  resolve(): Post {
+  resolve(route: ActivatedRouteSnapshot): Post {
     console.log('Post detail resolve service.');
 
-    return {
-      id: 1,
-      title: 'hello',
-    };
+    const postId = Number(route.paramMap.get('id'));
+
+    // return {
+    //   id: 1,
+    //   title: 'hello',
+    // };
+    return this.postService.show(postId) as Post;
   }
 }
