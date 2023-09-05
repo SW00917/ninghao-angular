@@ -23,13 +23,18 @@ export class ObservableDemoComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // this.demoObservable = of('小火龍', '皮卡丘', '超夢');
     // this.demoObservable = interval(1000);
-    const someNumbers = interval(1000);
-    // const transformValue = map((value) => `# ${value}`);
-    const transformValue = pipe(
+    // const someNumbers = interval(1000);
+    // // const transformValue = map((value) => `# ${value}`);
+    // const transformValue = pipe(
+    //   filter((value: number) => value % 2 !== 0),
+    //   map((value) => `# ${value}`),
+    // );
+    // this.demoObservable = transformValue(someNumbers);
+
+    this.demoObservable = interval(1000).pipe(
       filter((value: number) => value % 2 !== 0),
       map((value) => `# ${value}`),
     );
-    this.demoObservable = transformValue(someNumbers);
   }
 
   ngOnDestroy() {
