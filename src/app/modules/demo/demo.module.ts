@@ -7,7 +7,7 @@ import { ChildRoutesComponent } from './child-routes/child-routes.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
-
+import { PostModule } from '../post/post.module';
 
 @NgModule({
   declarations: [
@@ -15,11 +15,8 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
     ChildRoutesComponent,
     LoginComponent,
     AdminComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
   ],
-  imports: [
-    CommonModule,
-    DemoRoutingModule
-  ]
+  imports: [CommonModule, DemoRoutingModule, PostModule],
 })
-export class DemoModule { }
+export class DemoModule {}

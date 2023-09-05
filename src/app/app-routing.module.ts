@@ -19,6 +19,11 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'demo',
+    loadChildren: () =>
+      import('./modules/demo/demo.module').then((module) => module.DemoModule),
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
   },
