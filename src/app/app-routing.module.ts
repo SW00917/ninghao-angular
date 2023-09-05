@@ -5,6 +5,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 // import { RegisterComponent } from './modules/user/components/register/register.component';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 import { MessageBoxComponent } from './core/components/message-box/message-box.component';
+import { SelectivePreloadingStrategyService } from './core/service/selective-preloading-strategy.service';
 
 const routes: Routes = [
   // { path: 'posts', component: PostComponent },
@@ -22,6 +23,9 @@ const routes: Routes = [
     path: 'demo',
     loadChildren: () =>
       import('./modules/demo/demo.module').then((module) => module.DemoModule),
+    data: {
+      preload: true,
+    },
   },
   {
     path: '**',
@@ -36,9 +40,14 @@ const routes: Routes = [
 
 @NgModule({
   // imports: [RouterModule.forRoot(routes)],
+  // imports: [
+  //   RouterModule.forRoot(routes, {
+  //     preloadingStrategy: PreloadAllModules,
+  //   }),
+  // ],
   imports: [
     RouterModule.forRoot(routes, {
-      preloadingStrategy: PreloadAllModules,
+      preloadingStrategy: SelectivePreloadingStrategyService,
     }),
   ],
   exports: [RouterModule],
