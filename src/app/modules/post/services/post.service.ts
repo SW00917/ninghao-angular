@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Post } from '../models/post.model';
-import { catchError, throwError } from 'rxjs';
+import { catchError, delay, retry, retryWhen, take, throwError } from 'rxjs';
 // import { posts } from '../posts';
 
 @Injectable({
@@ -28,7 +28,14 @@ export class PostService {
 
   index() {
     // return this.http.get(this.postApi);
-    return this.http.get(this.postApi).pipe(catchError(this.handleError));
+    // return this.http.get(this.postApi).pipe(catchError(this.handleError));
+    // return this.http
+    //   .get(this.postApi)
+    //   .pipe(catchError(this.handleError), retry(3));
+    return this.http.get(this.postApi).pipe(
+      catchError(this.handleError),
+      retryWhen((errors) => errors.pipe(delay(3000), take(3))),
+    );
   }
 
   show(id: number) {
