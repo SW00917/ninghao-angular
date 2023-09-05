@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-// import { Post } from '../models/post.model';
+import { Post } from '../models/post.model';
 // import { posts } from '../posts';
 
 @Injectable({
@@ -29,5 +29,7 @@ export class PostService {
     return this.http.get(this.postApi);
   }
 
-  show(id: number) {}
+  show(id: number) {
+    return this.http.get<Post>(`${this.postApi}/${id}`);
+  }
 }
