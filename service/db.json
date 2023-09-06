@@ -9,10 +9,10 @@
   ],
   "posts": [
     {
-      "id": 1,
-      "title": "Yellow",
+      "title": "Yellow12345",
       "body": "Yellow Color",
-      "image": "https://resources.ninghao.net/images/IMG_2490.JPG"
+      "image": "https://resources.ninghao.net/images/IMG_2490.JPG",
+      "id": 1
     },
     {
       "id": 2,

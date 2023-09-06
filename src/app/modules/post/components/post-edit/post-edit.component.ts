@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../../services/post.service';
 import { switchMap } from 'rxjs';
+import { Post } from '../../models/post.model';
 
 @Component({
   selector: 'app-post-edit',
@@ -33,5 +34,11 @@ export class PostEditComponent implements OnInit {
 
   onSubmit() {
     console.log(this.postEditForm.value);
+    this.postService
+      .update(
+        +this.route.snapshot.paramMap.get('id'),
+        this.postEditForm.value as Post,
+      )
+      .subscribe();
   }
 }
