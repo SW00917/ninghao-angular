@@ -23,6 +23,7 @@ export class PostService {
   // }
 
   postApi = 'http://localhost:3000/posts';
+  myListApi = 'http://localhost:3000/my-List';
 
   constructor(private http: HttpClient) {}
 
@@ -44,5 +45,9 @@ export class PostService {
 
   handleError(error: HttpErrorResponse) {
     return throwError('Something went wrong.');
+  }
+
+  addToList(entity: Post) {
+    return this.http.post<Post>(this.myListApi, entity);
   }
 }
