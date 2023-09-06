@@ -6,6 +6,7 @@ import { PostDetailsComponent } from './components/post-details/post-details.com
 // import { AppRoutingModule } from 'src/app/app-routing.module';
 import { PostRoutingModule } from './post-routing.module';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PostEditComponent } from './components/post-edit/post-edit.component';
     PostEditComponent,
   ],
   // imports: [CommonModule, AppRoutingModule, PostRoutingModule],
-  imports: [CommonModule, PostRoutingModule],
+  // imports: [CommonModule, PostRoutingModule],
+  imports: [CommonModule, PostRoutingModule, ReactiveFormsModule],
   exports: [PostComponent],
 })
 export class PostModule {}
